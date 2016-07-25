@@ -579,7 +579,7 @@ def wait_ready():
         if not already_loaded:
             already_loaded = True
             menu.insert_hooks()
-        return 0
+        return -1
 
     return 1000
 

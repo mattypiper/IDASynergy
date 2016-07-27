@@ -127,7 +127,8 @@ class IDASynergyHooksIDP(IDP_Hooks):
         elif lent == 4:
             ourtype == "W"
         if ourtype:
-            self.data_io.apply_modification("datadefs", (ea, ourtype))
+            if hasattr(self, "data_io"):
+                self.data_io.apply_modification("datadefs", (ea, ourtype))
         return IDP_Hooks.make_data(self, ea, tid, flags, lent)
 
     @IDAImportFix()

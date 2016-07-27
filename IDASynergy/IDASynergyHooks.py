@@ -104,7 +104,7 @@ class IDASynergyHooksIDP(IDP_Hooks):
             return IDP_Hooks.renamed(self, ea, new_name, local_name)
 
         if Name(ea) != "" and GetFunctionName(ea) != "": # If renaming a function...
-            if self.hasattr("data_io"):
+            if hasattr(self, "data_io"):
                 self.data_io.apply_modification("functions", (ea, new_name))
                 return IDP_Hooks.renamed(self, ea, new_name, local_name)
 
@@ -133,7 +133,7 @@ class IDASynergyHooksIDP(IDP_Hooks):
     @IDAImportFix()
     def add_func(self, func):
         IDP_Hooks.add_func(self, func)
-        if self.hasattr("data_io"):
+        if hasattr(self, "data_io"):
             self.data_io.apply_modification("functions", (func.startEA, GetFunctionName(func.startEA)))
         return 0
 
